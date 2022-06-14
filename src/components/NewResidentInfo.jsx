@@ -21,7 +21,7 @@ const NewResidentInfo = ({ newResident }) => {
             <div className="info">
                 <ul className="items__container">
                     <li><span className="title"><h1>{newCharacter?.name}</h1></span></li>
-                    <li><span className="items">Species: </span>{newCharacter?.origin.name}</li>
+                    <li><span className="items">Species: </span>{newCharacter?.species}</li>
                     <li><span className="items">Gender: </span>{newCharacter?.gender}</li>
                     <li><span className="items">Status: </span>{newCharacter?.status}</li><span className="status"></span>
                     <li><span className="items">Origin: </span>{newCharacter?.origin.name}</li>

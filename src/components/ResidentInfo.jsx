@@ -24,7 +24,7 @@ const ResidentInfo = ({ resident }) => {
       <div className="info">
       <ul className="items__container">
         <li><span className="title"><h1>{character?.name}</h1></span></li>
-        <li><span className="items">Species: </span>{character?.origin.name}</li>
+        <li><span className="items">Species: </span>{character?.species}</li>
         <li><span className="items">Gender: </span>{character?.gender}</li>
         <li><span className="items">Status: </span>{character?.status}</li><span className="status"></span>
         <li><span className="items">Origin: </span>{character?.origin.name}</li>
