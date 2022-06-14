@@ -197,11 +197,12 @@ footer {
   }
 
   .info {
-    border-radius: 0%;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    max-height: 300px;
+    border-radius: 0% 20px 20px 0%;
     width: fit-content;
+    left: 3%;
+    position: relative;
+    max-height: 300px;
+    overflow-y: overlay;
   }
 
   .global {
@@ -215,7 +216,7 @@ footer {
   .items__container {
     list-style: none;
     padding: 0%;
-    margin: 0% 13% 1%;
+    margin: 0% 10% 1%;
     font-size: 1rem;
   }
 
