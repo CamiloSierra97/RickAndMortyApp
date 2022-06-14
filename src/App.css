@@ -108,6 +108,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  min-height: 50vh;
   gap: 8%;
   margin: 3% 3% 0%;
   background-color: rgba(27, 36, 77, 0.95);
@@ -150,15 +151,14 @@ body {
 }
 
 .footer {
-  margin-bottom: 0%;
   background-color: rgba(177, 225, 44, 1);
-  height: 3vh;
+  height: 5vh;
 }
 
 footer {
   text-align: center;
   font-size: 1rem;
-  padding-top: 0.5vh;
+  padding-top: 1.5vh;
 }
 
 @media screen and (min-width: 1024px) {
