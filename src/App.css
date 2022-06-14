@@ -6,7 +6,7 @@ body {
   text-align: center;
   background-color: rgba(27, 36, 77, 0.95);
   font-family: 'Gloria Hallelujah', cursive;
-  color: rgba(0,181,205,255);
+  color: rgba(0, 181, 205, 255);
 }
 
 .header__container {
@@ -88,7 +88,7 @@ body {
 }
 
 .input input {
-  -moz-appearance:textfield;
+  -moz-appearance: textfield;
 }
 
 .input input::-webkit-inner-spin-button,
@@ -99,6 +99,9 @@ body {
 
 .card {
   margin-top: 14%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .character__container {
@@ -120,6 +123,7 @@ body {
 .info {
   min-height: fit-content;
   min-width: 300px;
+  max-width: 300px;
   background-color: #301858;
   border-radius: 20px;
 }
@@ -129,17 +133,24 @@ body {
 }
 
 .image__container {
+  position: relative;
   width: 250px;
-  margin-left: 8%;
+  padding-left: 5vw;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3%;
 }
 
 .image__container img {
-  width: 100%;
-  aspect-ratio: 1;
+  position: relative;
+  width: 54vw;
+  display: flex;
+  justify-content: center;
+  margin: 0% 0% 3%;
 }
 
 .footer {
-  margin: 0%;
+  margin-bottom: 0%;
   background-color: rgba(177, 225, 44, 1);
   height: 3vh;
 }
@@ -165,33 +176,38 @@ footer {
     background-size: cover;
     background-attachment: fixed;
     /* box-shadow: 0px -33px 119px 15px rgb(177 225 44 / 85%); */
- }
+  }
 
- .card {
-  display: flex;
-  margin-top: 3%;
- }
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3%;
+    flex-direction: row;
+  }
 
- .image__container {
-  width: 300px;
-  aspect-ratio: 1;
-  margin-left: 0%;
- }
+  .image__container img {
+    width: 54vw;
+  }
 
- .info {
-  border-radius: 0%;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  max-height: 300px;
-  width: fit-content;
- }
+  .info {
+    border-radius: 0%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    max-height: 300px;
+    width: fit-content;
+  }
 
- .global {
-  background-image: url(./img/24-fondos-de-pantalla-de-rick-and-morty-portal-wallpaperboat.-wallpaper-hd-1080p-de-rick-y-morty-1024x576.jpg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  margin: 0%;
- }
+  .global {
+    background-image: url(./img/24-fondos-de-pantalla-de-rick-and-morty-portal-wallpaperboat.-wallpaper-hd-1080p-de-rick-y-morty-1024x576.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0%;
+  }
+
+  .items__container {
+    font-size: 1.1rem;
+  }
+
 
 }
