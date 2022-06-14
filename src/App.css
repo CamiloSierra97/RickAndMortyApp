@@ -45,10 +45,9 @@ body {
 
 .location__data {
   list-style: none;
-  margin: 0% 3% 0%;
-  padding: 0.5% 11% 0% 0%;
+  margin: 0% 2% 1%;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .location__container {
