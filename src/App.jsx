@@ -33,7 +33,6 @@ function App() {
     }
   }, [locationId])
 
-  console.log(newLocation)
 
   return (
     <div className="App">

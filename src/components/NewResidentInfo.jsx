@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 const NewResidentInfo = ({ newResident }) => {
 
     const [newCharacter, setNewCharacter] = useState()
-    console.log(newResident)
 
     useEffect(() => {
         if (newCharacter == undefined) {
@@ -13,7 +12,6 @@ const NewResidentInfo = ({ newResident }) => {
                 .catch(err => console.log(err))
         }
     }, [])
-    console.log(newCharacter)
 
     return (
         <article className="card">
