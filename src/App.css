@@ -210,6 +210,7 @@ footer {
     background-size: contain;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position-x: center;
     margin: 0%;
   }
 
