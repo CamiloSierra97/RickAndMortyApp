@@ -17,7 +17,7 @@ function App() {
 
   const location = e => {
     e.preventDefault()
-    if (e > 126 || e <= 0) {
+    if (e > 126 && e <= 0) {
       placeholder = 'Type a valid number'
     } else {
       setLocationId(e.target.children[0].value)
