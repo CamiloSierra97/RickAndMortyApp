@@ -158,6 +158,26 @@ body {
   margin: 0% 0% 3%;
 }
 
+.status {
+  display: inline-flex;
+  width: 1rem;
+  aspect-ratio: 1;
+  margin-left: 0.7rem;
+  border-radius: 100%;
+}
+
+.Alive {
+  background-color: #2B7A0B;
+}
+
+.Dead {
+  background-color: #990000;
+}
+
+.unknown {
+  background-color: #7F8487;
+}
+
 .footer {
   background-color: rgba(177, 225, 44, 1);
   height: 5vh;
@@ -227,6 +247,11 @@ footer {
   }
 
   ::selection {
+    background-color: rgba(27, 36, 77, 0.95);
+    color: rgba(177, 225, 44, 1);
+  }
+
+  ::-moz-selection {
     background-color: rgba(27, 36, 77, 0.95);
     color: rgba(177, 225, 44, 1);
   }

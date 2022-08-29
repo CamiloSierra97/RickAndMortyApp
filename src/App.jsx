@@ -12,6 +12,9 @@ function App() {
   const { data } = useData()
   const [locationId, setLocationId] = useState()
   const [newLocation, setNewLocation] = useState()
+  const [currentPage, setCurrentPaga] = useState(1)
+
+  const arrayPage = []
 
   let placeholder = 'Type a location ID'
 
