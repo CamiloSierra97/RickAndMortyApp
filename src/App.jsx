@@ -1,90 +1,100 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import './App.css'
-import Location from './components/Location'
-import NewLocation from './components/NewLocation'
-import NewResidentInfo from './components/NewResidentInfo'
-import ResidentInfo from './components/ResidentInfo'
-import useData from './hooks/useData'
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "./App.css";
+import Location from "./components/Location";
+import NewLocation from "./components/NewLocation";
+import NewResidentInfo from "./components/NewResidentInfo";
+import ResidentInfo from "./components/ResidentInfo";
+import useData from "./hooks/useData";
 
 function App() {
-
-  const { data } = useData()
-  const [locationId, setLocationId] = useState()
-  const [newLocation, setNewLocation] = useState()
-  const [currentPage, setCurrentPaga] = useState(1)
-
-  const arrayPage = []
-
-  let placeholder = 'Type a location ID'
-
-  const location = e => {
-    e.preventDefault()
-    if (e > 126 && e <= 0) {
-      placeholder = 'Type a valid number'
-    } else {
-      setLocationId(e.target.children[0].value)
-    }
-  }
-
+  const { data } = useData();
+  const [placeholder, setPlaceholder] = useState("Type a location ID");
+  const [locationId, setLocationId] = useState();
+  const [newLocation, setNewLocation] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [offset, setOffset] = useState(0);
+  const [pageData, setPageData] = useState();
 
   useEffect(() => {
+    setPlaceholder("Type a location ID");
     if (locationId !== undefined) {
-      const URL = `https://rickandmortyapi.com/api/location/${locationId}`
-      axios.get(URL)
-        .then(res => setNewLocation(res.data))
+      const URL = `https://rickandmortyapi.com/api/location/${locationId}`;
+      axios.get(URL).then((res) => setNewLocation(res.data));
     }
-  }, [locationId])
+  }, [locationId]);
 
+  useEffect(() => {
+    // console.log(newLocation);
+    setTotalPages(Math.ceil(newLocation?.residents.length / 10));
+    console.log(newLocation?.residents.slice(offset, 10));
+    // console.log(arrayPage)
+  }, [newLocation, currentPage]);
+
+  const location = (e) => {
+    e.preventDefault();
+    if (e.target.children[0].value <= 126 && e.target.children[0].value > 0) {
+      setLocationId(e.target.children[0].value);
+      e.target.children[0].value = "";
+    } else {
+      e.target.children[0].value = "";
+      setPlaceholder("Type a valid number");
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage != 1) {
+      setCurrentPage(currentPage - 1);
+      setOffset(offset - 10);
+    }
+    console.log(currentPage);
+    console.log(offset);
+  };
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+    setOffset(offset + 10);
+    console.log(currentPage);
+    console.log(offset);
+  };
 
   return (
     <div className="App">
-      <div className="header__container">
-      </div>
+      <div className="header__container"></div>
       <main className="presentation__container">
-        <h1 className="presentation">
-          Welcome to Rick and Morty App!
-        </h1>
+        <h1 className="presentation">Welcome to Rick and Morty App!</h1>
         <p>Enter a location ID between 1 and 126</p>
         <form className="input" onSubmit={location}>
           <input type="number" placeholder={placeholder} />
-          <button className="search"><i className='bx bx-search-alt-2' ></i></button>
+          <button className="search">
+            <i className="bx bx-search-alt-2"></i>
+          </button>
         </form>
       </main>
-      {
-        newLocation
-
-          ?
-
-          <NewLocation newLocation={newLocation} />
-
-          :
-
-          <Location data={data} />
-
-      }
+      {newLocation ? (
+        <NewLocation
+          newLocation={newLocation}
+          totalPages={totalPages}
+          prevPage={prevPage}
+          nextPage={nextPage}
+        />
+      ) : (
+        <Location data={data} />
+      )}
       <div className="global">
         <div className="character__container">
-          {
-            newLocation
-
-              ?
-
-              newLocation?.residents.map(newResident => (
-                <NewResidentInfo newResident={newResident} key={newResident}/>
+          {newLocation
+            ? newLocation?.residents.map((newResident) => (
+                <NewResidentInfo newResident={newResident} key={newResident} />
               ))
-              
-              :
-              
-              data?.data.residents.map(resident => (
+            : data?.data.residents.map((resident) => (
                 <ResidentInfo resident={resident} key={resident} />
-              ))
-              
-          }
+              ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
