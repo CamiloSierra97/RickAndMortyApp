@@ -19,16 +19,22 @@ function App() {
 
   useEffect(() => {
     setPlaceholder("Type a location ID");
+    setCurrentPage(1);
+    setOffset(0);
     if (locationId !== undefined) {
       const URL = `https://rickandmortyapi.com/api/location/${locationId}`;
-      axios.get(URL).then((res) => setNewLocation(res.data));
+      axios
+        .get(URL)
+        .then((res) => setNewLocation(res.data))
+        .catch((err) => console.log(err));
     }
+    setPageData(newLocation?.residents.slice(offset, 10));
+    // console.log(pageData)
   }, [locationId]);
 
   useEffect(() => {
-    // console.log(newLocation);
     setTotalPages(Math.ceil(newLocation?.residents.length / 10));
-    console.log(newLocation?.residents.slice(offset, 10));
+    setPageData(newLocation?.residents.slice(offset, 10));
     // console.log(arrayPage)
   }, [newLocation, currentPage]);
 
@@ -44,19 +50,21 @@ function App() {
   };
 
   const prevPage = () => {
-    if (currentPage != 1) {
+    if (currentPage != 1 && offset >= 9) {
       setCurrentPage(currentPage - 1);
       setOffset(offset - 10);
+      setPageData(newLocation?.residents.slice(offset - 10, 9));
     }
-    console.log(currentPage);
-    console.log(offset);
   };
 
   const nextPage = () => {
-    setCurrentPage(currentPage + 1);
-    setOffset(offset + 10);
-    console.log(currentPage);
-    console.log(offset);
+    console.log(offset)
+    console.log(newLocation?.residents.slice(offset, 10));
+    if (offset + 10 < newLocation.residents.length) {
+      setOffset(offset + 10);
+      setCurrentPage(currentPage + 1);
+      console.log(newLocation);
+    }
   };
 
   return (
@@ -70,6 +78,8 @@ function App() {
           <button className="search">
             <i className="bx bx-search-alt-2"></i>
           </button>
+          <p>{currentPage}</p>
+          <p>{offset}</p>
         </form>
       </main>
       {newLocation ? (

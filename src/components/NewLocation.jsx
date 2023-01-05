@@ -21,7 +21,7 @@ function NewLocation({ newLocation, totalPages, prevPage, nextPage }) {
           </li>
         </ul>
       </section>
-      <p>{Number(totalPages)}</p>
+      <p>{totalPages}</p>
       <button onClick={prevPage}>Prev</button>
       <button onClick={nextPage}>Next</button>
     </main>
